@@ -7,6 +7,28 @@
             "site-brands-names": "div.brand-group ul li a::text",
             "number-of-products" : "div.count-container p.amount::text"
         }
+    },
+    "grs": {
+        "name": "grs",
+        "start_urls": ["https://grsboutique.com"],
+        "selectors": {
+            "site-brands-URLs": "li[data-title=\"Brand\"] a.link-faded::attr(href)",
+            "site-brands-names": "li[data-title=\"Brand\"] a.link-faded::text",
+            "number-of-products" : "p.collection-toolbar__products-count::text"
+        },
+        "custom_settings": {
+            "DUPEFILTER_CLASS": "scrapy.dupefilters.BaseDupeFilter",
+            "DUPEFILTER_DEBUG": true
+        }
+    },
+    "primo": {
+        "name": "primo",
+        "start_urls": ["https://primostoremultibrand.com/pages/brands"],
+        "selectors": {
+            "site-brands-URLs": "div.brands a::attr(href)",
+            "site-brands-names": "div.brands div.brand::text",
+            "number-of-products" : "div.utility-bar__item::text"
+        }
     }
 
 }
