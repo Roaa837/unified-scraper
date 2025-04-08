@@ -17,12 +17,29 @@ class UnifiedscraperPipeline:
         for fileld_name in field_names:
             value = adapter.get(fileld_name)
             if fileld_name == "brand_name":
-                adapter[fileld_name] = value.strip()
+                adapter[fileld_name] = self.clean_string(value)
 
             if fileld_name == "number_of_products":
                 adapter[fileld_name] = self.extract_number(value)
 
         return item
+
+    def clean_string(self, text):
+        if not text:
+            return ""
+
+        # 1. Replace common escape sequences
+        text = text.replace('\n', ' ').replace('\t', ' ').replace('\r', ' ')
+
+        # 2. Collapse multiple spaces
+        text = re.sub(r'\s+', ' ', text)
+
+        # 3. Handle special HTML/CSS characters
+        text = re.sub(r'\\[xX][0-9a-fA-F]+', '', text)  # Remove hex escapes
+        text = re.sub(r'\\[0-7]{1,3}', '', text)  # Remove octal escapes
+
+        # 4. Strip leading/trailing spaces
+        return text.strip()
 
     def extract_number(self ,text):
         match = re.search(r"""
