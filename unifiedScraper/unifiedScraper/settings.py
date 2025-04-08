@@ -12,6 +12,18 @@ BOT_NAME = "unifiedScraper"
 SPIDER_MODULES = ["unifiedScraper.spiders"]
 NEWSPIDER_MODULE = "unifiedScraper.spiders"
 
+FEEDS = {
+    'output/%(website)s_data.csv': {
+        'format': 'csv',
+        'encoding': 'utf-8-sig',
+        'overwrite': True,
+        'fields': None,
+        'item_export_kwargs': {
+                    'export_empty_fields': True,
+                },
+    }
+}
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "unifiedScraper (+http://www.yourdomain.com)"
@@ -62,9 +74,9 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "unifiedScraper.pipelines.UnifiedscraperPipeline": 300,
-#}
+ITEM_PIPELINES = {
+   "unifiedScraper.pipelines.UnifiedscraperPipeline": 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
