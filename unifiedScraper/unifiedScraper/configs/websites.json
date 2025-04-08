@@ -1,0 +1,12 @@
+{
+    "wardow": {
+        "name": "wardow",
+        "start_urls": ["https://www.wardow.com/en/brands"],
+        "selectors": {
+            "site-brands-URLs": "div.brand-group ul li a::attr(href)",
+            "site-brands-names": "div.brand-group ul li a::text",
+            "number-of-products" : "div.count-container p.amount::text"
+        }
+    }
+
+}
