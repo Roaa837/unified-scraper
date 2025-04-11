@@ -2,7 +2,7 @@ import json
 import scrapy
 from pathlib import Path
 from urllib.parse import urljoin
-from ..items import UnifiedscraperItem
+from ...items import UnifiedscraperItem
 
 
 class UnifiedSpider(scrapy.Spider):
