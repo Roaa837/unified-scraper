@@ -11,3 +11,13 @@ class UnifiedscraperItem(scrapy.Item):
     # name = scrapy.Field()
     brand_name = scrapy.Field()
     number_of_products = scrapy.Field()
+
+class ProductItem(scrapy.Item):
+    """For storing individual product information""" 
+    product_url = scrapy.Field()          # Full URL to product page
+    product_name = scrapy.Field()         # Title/name of product
+    brand = scrapy.Field()                # Parent brand name  
+    category = scrapy.Field()             # Product category
+    product_price = scrapy.Field()        # Current price (numeric)
+    product_description = scrapy.Field()  # Full description text
+
